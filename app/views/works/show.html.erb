@@ -1,1 +1,4 @@
-
+<h1>Show</h1>
+<% if @work %>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

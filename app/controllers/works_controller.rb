@@ -41,6 +41,7 @@ class WorksController < ApplicationController
 
   def destroy
     Work.find_by(id: params[:id]).destroy
+    flash[:success] = "Item deleted"
     redirect_to root_path
   end
 

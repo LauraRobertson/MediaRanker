@@ -4,6 +4,14 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+gatsby:
+  category: "book"
+  title: "The Great Gatsby"
+  creator: "F. Scott Fitzgerald"
+  publication_year: "2017"
+  description: "A book about sad rich people."
+  
 one: {}
 # column: value
 #

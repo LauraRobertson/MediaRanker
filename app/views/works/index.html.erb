@@ -7,6 +7,7 @@
   <li>
     <h4><%= work.title %> <small>by <%= work.creator%></small></h4>
     <p>5 votes!!!!</p>
+    <%= link_to "Delete", work_path(work.id), method: :delete %>
   </li>
   <% end %>
 </ul>

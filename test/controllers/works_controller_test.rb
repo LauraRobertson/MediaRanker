@@ -1,7 +1,14 @@
-require "test_helper"
+require 'test_helper'
 
-describe WorksController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+class WorksControllerTest < ActionDispatch::IntegrationTest
+  describe "WorksController" do
+    let(:gatsby) { works(:gatsby) }
+
+    it "successfully deletes a work" do
+      proc {(delete work_path(gatsby.id))}.must_change 'Work.count', -1
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+  end
+
 end

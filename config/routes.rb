@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'works#home', as: "root"
 
   resources :works
+
+  resources :users
 end

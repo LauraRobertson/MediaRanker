@@ -19,6 +19,27 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
       must_respond_with :success
     end
 
+    it "should be able to create a work" do
+      proc {
+        post works_path, params: { work: { category: "book", title: "New Title"}}
+      }.must_change 'Work.count', 1
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it "should re-render form if can't create book" do
+      proc { post works_path, params: { work: { category: "book", title: "  "}}}.must_change 'Work.count', 0
+      must_respond_with :success
+    end
+
+    it "should be able to successfully edit a book title" do
+      put work_path( works(:gatsby)), params: {work: {title: "Updated Title"}}
+
+      updated_work = Work.find( works(:gatsby).id)
+      updated_work.title.must_equal "Updated Title"
+      must_redirect_to works_path
+    end
+
     it "successfully deletes a work" do
       proc {(delete work_path(gatsby.id))}.must_change 'Work.count', -1
       must_respond_with :redirect

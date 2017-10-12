@@ -1,6 +1,14 @@
-<h1>Index</h1>
-<%= link_to("New", new_work_path)  %>
+<!-- <section class="row spotlight">
+  <div>
+    <h3><span class="media-spotlight-header">Media Spotlight #colon ::after</span>
+      <%# link_to(work.title, work_path(work.id), alt: 'link to', class: "title") %> by <%# work.creator%>
+    <p>9 votes - !!!!!</p>
+  </div>
+</section>
 
+<hr class="root-hr" />-->
+
+<section class="top-ten columns large-4 small-12">
 <h3>Top Category</h3>
 <ul>
   <% @works.each do |work| %>
@@ -10,3 +18,4 @@
   </li>
   <% end %>
 </ul>
+</section>

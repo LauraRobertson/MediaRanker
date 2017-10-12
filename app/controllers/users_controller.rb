@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
   def index
+    @users = User.all
   end
 
   def show
+    @user = User.find_by(id: params[:id].to_i)
   end
 
   def new
@@ -12,11 +14,8 @@ class UsersController < ApplicationController
   def create
   end
 
-  def destroy
-  end
-
   private
 
-  def work_params
+  def user_params
   end
 end

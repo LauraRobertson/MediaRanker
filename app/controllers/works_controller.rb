@@ -19,8 +19,10 @@ class WorksController < ApplicationController
   def create
     @work = Work.new work_params
     if @work.save
+      flash[:success] = "Item successfully added"
       redirect_to root_path
     else
+      flash.now[:success] = "Item could not be added"
       render :new
     end
   end
@@ -38,8 +40,10 @@ class WorksController < ApplicationController
     redirect_to works_path unless @work
 
     if @work.update_attributes work_params
+      flash[:success] = "Item successfully updated"
       redirect_to works_path
     else
+      flash.now[:success] = "Item failed to update"
       render :edit
     end
   end

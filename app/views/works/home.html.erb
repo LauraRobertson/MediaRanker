@@ -1,0 +1,21 @@
+<!-- <section class="row spotlight">
+  <div>
+    <h3><span class="media-spotlight-header">Media Spotlight #colon ::after</span>
+      <%# link_to(work.title, work_path(work.id), alt: 'link to', class: "title") %> by <%# work.creator%>
+    <p>9 votes - !!!!!</p>
+  </div>
+</section>
+
+<hr class="root-hr" />-->
+
+<section class="top-ten columns large-4 small-12">
+<h3>Top Category</h3>
+<ul>
+  <% @works.each do |work| %>
+  <li>
+    <h4><%= link_to(work.title, work_path(work.id), alt: 'link to', class: "title") %> <small>by <%= work.creator%></small></h4>
+    <p>5 votes!!!!</p>
+  </li>
+  <% end %>
+</ul>
+</section>

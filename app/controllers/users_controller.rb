@@ -9,14 +9,15 @@ class UsersController < ApplicationController
   end
 
   def login_form
+    @user = User.new
   end
 
   def login
     user = User.find_by(username: params[:username])
 
     if user
-      flash[:success] = "#{ user.username } is successfully logged in"
       session[:username] = user.id
+      flash[:success] = "#{ user.username } is successfully logged in"
       redirect_to root_path
     else
       user = User.create(username: params[:username])
@@ -30,6 +31,12 @@ class UsersController < ApplicationController
     session[:username] = nil
     flash[:success] = "Successfully logged out"
     redirect_to root_path
+  end
+
+  private
+
+  def user_params
+    return params.require(:user).permit(:username)
   end
 
 end

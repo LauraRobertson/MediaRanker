@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login'
+  delete '/logout',  to: 'sessions#destroy'
 end

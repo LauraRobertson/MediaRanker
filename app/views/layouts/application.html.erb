@@ -19,8 +19,13 @@
       <%= link_to "View all users", users_path, class: "button" %>
     </nav>
     <div class="float-right">
-      <%= link_to "Log In", login_path, class: "button" %>
-      <%= link_to "Log Out", root_path, class: "button" %>
+      <% if logged_in? %>
+        <%= link_to "Logged in as #{session[:username]}", login_path, class: "button" %>
+      <% else %>
+        <%= link_to "Log In", login_path, class: "button" %>
+      <% end %>
+      <%# link_to "Log Out", root_path, class: "button" %>
+      <%= link_to "Log out", logout_path, method: :delete, class: "button" %>
     </div>
   </header>
 

@@ -1,7 +1,11 @@
 class WorksController < ApplicationController
   def home
     @homepage = true
-    @works = Work.all
+    
+    @spotlight = Work.first
+    @books = Work.where(category: "book").limit(10)
+    @movies = Work.where(category: "movie").limit(10)
+    @albums = Work.where(category: "album").limit(10)
   end
 
   def index

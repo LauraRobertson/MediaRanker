@@ -18,10 +18,10 @@
       <%= link_to "Add a new work", new_work_path, class: "button" %>
       <%= link_to "View all users", users_path, class: "button" %>
     </nav>
-    <!-- <div class="float-right">
-      <%# link_to "Logged in as -----", root_path, class: "button" %>
-      <%# link_to "Log Out", root_path, class: "button" %>
-    </div> -->
+    <div class="float-right">
+      <%= link_to "Log In", login_path, class: "button" %>
+      <%= link_to "Log Out", root_path, class: "button" %>
+    </div>
   </header>
 
   <main class="row">

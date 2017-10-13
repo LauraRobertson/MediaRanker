@@ -8,14 +8,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id].to_i)
   end
 
-  def new
+  def login_form
   end
 
-  def create
+  def login
   end
 
-  private
-
-  def user_params
-  end
 end

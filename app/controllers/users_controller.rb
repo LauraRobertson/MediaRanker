@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully created new user #{ params[:username] } with ID #{ params[:id] }"
       user = User.create(username: params[:username])
       session[:username] = user.username
-      redirect_to user_path
+      redirect_to users_path
     end
   end
 

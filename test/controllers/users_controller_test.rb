@@ -36,7 +36,6 @@ describe UsersController do
     end
   end
 
-  describe "a user can log out" do
-
-  end
+  # describe "a user can log out" do
+  # end
 end

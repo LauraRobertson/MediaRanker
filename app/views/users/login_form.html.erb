@@ -1,12 +1,18 @@
 <h2>Log In</h2>
 
-<%= form_for @user ,url: login_path do |f| %>
-
-<%= f.label :username %>
-<%= f.text_field :username %>
-
-<%= f.submit "Log In", class: "button" %>
+<%= form_tag do %>
+<%= label_tag(:username, "Username") %>
+<%= text_field_tag(:username) %>
+<%= submit_tag("Log in", class: "button") %>
 <% end %>
+
+<%# form_for @user ,url: login_path do |f| %>
+
+<%# f.label :username %>
+<%# f.text_field :username %>
+
+<%# f.submit "Log In", class: "button" %>
+<%# end %>
 
 <article>
   <h4>A note about logging in</h4>

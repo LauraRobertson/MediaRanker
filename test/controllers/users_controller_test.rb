@@ -21,20 +21,19 @@ describe UsersController do
   end
 
   describe "a user can have an account" do
-    # it "a user can re-login" do
-    #   proc { post login_path, params: {user: {username: "rainbow"}}
-    # }.must_change 'User.count', 0
-    # must_respond_with :redirect
-    # assert_equal "rainbow is successfully logged in", flash[:info]
-    # end
+    it "a user can re-login" do
+      proc { post login_path, params: {username: "rainbow"}}.must_change 'User.count', 0
+      must_respond_with :redirect
+      must_redirect_to root_path
+      assert_equal "rainbow is successfully logged in", flash[:success]
+    end
 
-    # it "can add a new user" do
-    #   proc {
-    #     post login_path, params: {user: { username: "A Username"}}
-    #   }.must_change 'User.count', 1
-    #   must_respond_with :redirect
-    #   must_redirect_to root_path
-    # end
+    it "can add a new user" do
+      proc { post login_path, params: { username: "mnajk"}}.must_change 'User.count', 1
+      must_respond_with :redirect
+      must_redirect_to users_path
+      assert_equal "Successfully created new user mnajk with ID 206669144", flash[:success]
+    end
   end
 
   describe "a user can log out" do

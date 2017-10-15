@@ -4,12 +4,12 @@ class VotesController < ApplicationController
     vote = Vote.new(vote_params)
     vote.user_id = session[:username]
     if vote.save
-      flash[:message] = "Successfully upvoted!"
+      flash[:success] = "Successfully upvoted!"
     else
       if vote.user_id == nil
-        flash[:message] = "You must be logged in to do that!"
+        flash[:error] = "You must be logged in to do that!"
       else
-        flash[:message] = "Hey! You've already voted for that!"
+        flash[:error] = "Hey! You've already voted for that!"
       end
     end
     redirect_to works_path

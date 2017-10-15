@@ -11,3 +11,6 @@
 </section>
 <% end %>
 </article>
+
+<%= link_to 'Upvote', create_vote_path(work_id: @work.id), method: :post, class: "button" %>
+<h3><%= "#{@work.votes.count} Votes for this work" %></h3>

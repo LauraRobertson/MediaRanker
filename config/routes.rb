@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   delete '/logout',  to: 'users#destroy'
 
-  resources :votes, only: [:create]
+  post '/votes/:work_id', to: 'votes#create', as: 'create_vote'
 end

@@ -16,11 +16,11 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:username])
 
     if user
-      session[:username] = user.id
+      session[:username] = user.username
       flash[:success] = "#{ user.username } is successfully logged in"
       redirect_to root_path
     else
-      user = User.create(username: params[:username])
+      user = User.create(user_params)
       flash[:success] = "Successfully created new user #{ params[:username] } with ID #{ user.id }"
       session[:username] = user.username
       redirect_to users_path

@@ -17,6 +17,8 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id].to_i)
+
+    head :not_found unless @work
   end
 
   def new
@@ -37,14 +39,12 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id].to_i)
 
-    unless @work
-      redirect_to root_path
-    end
+    head :not_found unless @work
   end
 
   def update
     @work = Work.find_by(id: params[:id].to_i)
-    redirect_to works_path unless @work
+    head :not_found unless @work
 
     if @work.update_attributes work_params
       flash[:success] = "Item successfully updated"

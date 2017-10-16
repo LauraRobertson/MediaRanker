@@ -18,6 +18,11 @@ describe UsersController do
       get login_path
       must_respond_with :success
     end
+
+    it "should respond with 404 if user doesn't exist" do
+      get user_path(99999)
+      must_respond_with :not_found
+    end
   end
 
   describe "a user can have an account" do

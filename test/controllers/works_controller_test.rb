@@ -19,6 +19,11 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
         get new_work_path
         must_respond_with :success
       end
+
+      it "should respond with 404 with an invalid work id" do
+        get work_path(99999)
+        must_respond_with :not_found
+      end
     end
 
     describe "a users can create a work" do

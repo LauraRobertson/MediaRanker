@@ -1,13 +1,13 @@
 require "test_helper"
 
 describe Vote do
-  let(:user) { User.first }
-  let(:work) { Work.first }
-  let(:vote) { Vote.new(work: work, user: user) }
+  let(:user2) { users(:user2) }
+  let :work { Work.first }
+  let :vote { Vote.new(work: work, user: user2) }
 
   describe "validations" do
     it "must be valid" do
-      value(vote).must_be :valid?
+      vote.must_be :valid?
     end
 
     it "needs a user_id" do
@@ -16,7 +16,7 @@ describe Vote do
     end
 
     it "needs a work_id" do
-      test = Vote.new(user: user)
+      test = Vote.new(user: user2)
       test.wont_be :valid?
     end
   end

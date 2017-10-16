@@ -4,13 +4,15 @@ class WorksController < ApplicationController
     @works = Work.all
 
     @spotlight = Work.spotlight
-    @books = Work.popularity("book")
-    @movies = Work.popularity("movie")
-    @albums = Work.popularity("album")
+    @books = Work.top_ten("book")
+    @movies = Work.top_ten("movie")
+    @albums = Work.top_ten("album")
   end
 
   def index
-    @works = Work.all
+    @books = Work.popularity("book")
+    @movies = Work.popularity("movie")
+    @albums = Work.popularity("album")
   end
 
   def show

@@ -4,8 +4,12 @@ class Work < ApplicationRecord
   has_many :votes
 
   def self.popularity(category)
-    top_ten = Work.where(category: category).sort_by{|work| -work.votes.count}
-    return top_ten [0..9]
+    top = Work.where(category: category).sort_by{|work| -work.votes.count}
+    return top
+  end
+
+  def self.top_ten(category)
+    return popularity(category) [0..9]
   end
 
   def self.spotlight

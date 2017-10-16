@@ -3,10 +3,10 @@ class WorksController < ApplicationController
     @homepage = true
     @works = Work.all
 
-    @spotlight = Work.first
-    @books = Work.where(category: "book").limit(10)
-    @movies = Work.where(category: "movie").limit(10)
-    @albums = Work.where(category: "album").limit(10)
+    @spotlight = Work.spotlight
+    @books = Work.popularity("book")
+    @movies = Work.popularity("movie")
+    @albums = Work.popularity("album")
   end
 
   def index

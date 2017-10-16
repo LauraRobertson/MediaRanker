@@ -2,7 +2,7 @@
   <div>
     <h3><span class="media-spotlight-header">Media Spotlight</span>
       <%= link_to(@spotlight.title, work_path(@spotlight.id), alt: 'link to', class: "title") %> by <%= @spotlight.creator%></h3>
-      <p>14 votes - A wonderful musical where it sometimes rains </p>
+      <p><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
     </div>
 </section>
 

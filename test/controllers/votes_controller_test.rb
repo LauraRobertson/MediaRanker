@@ -1,22 +1,23 @@
 require "test_helper"
 
 describe VotesController do
-  let(:user1) { users(:user1) }
 
-  it "can create a vote" do
-    # flash[:success].must_equal "Successfully upvoted!"
+  before do
+    post login_path, params: {username: "rainbow"}
+    flash[:success].must_equal "rainbow is successfully logged in"
   end
 
-  it "prevents multiple voting form the same user" do
-    # flash[:error].must_equal "Hey! You've already voted for that!"
+  # it "can create a vote" do
+  #   proc { post create_vote_path(Work.first.id) }.must_change 'Vote.count', 1
+  #   flash[:success].must_equal "Successfully upvoted!"
+  # end
+  #
+  it "prevents multiple voting from the same user" do
+    proc { post create_vote_path(Work.first.id) }.must_change 'Vote.count', 0
+    flash[:error].must_equal "Hey! You've already voted for that!"
   end
 
-  it "requires the user to be logged in to vote" do
-    # flash[:error].must_equal "You must be logged in to do that!"
-  end
-
-  def session
-    post login_path, params: {username: user1.username}
-    session[:username].must_equal user1.id
-  end
+  # it "requires the user to be logged in to vote" do
+  #   flash[:error].must_equal "You must be logged in to do that!"
+  # end
 end
